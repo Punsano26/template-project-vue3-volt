@@ -1,0 +1,65 @@
+// Variables
+$primary: #3B82F6;
+$success: #22C55E;
+$danger:  #EF4444;
+
+/* Minimal, unique DataTable style */
+.p-datatable {
+  border: none;
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+
+  .p-datatable-thead > tr > th {
+    background: #F9FBFD;
+    color: #1F2B3C;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    border-bottom: 1px solid #E9ECF0;
+  }
+
+  .p-datatable-tbody > tr {
+    &:hover {
+      background: #F5F9FF;
+    }
+    > td {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid #F0F3F7;
+      color: #3A4B5C;
+    }
+  }
+
+  .p-paginator {
+    background: transparent;
+    border: none;
+    padding: 1.5rem 0 0;
+    .p-paginator-pages .p-paginator-page.p-highlight {
+      background: $primary;
+      color: white;
+      border-radius: 0.5rem;
+    }
+  }
+}
+
+/* Global button styles – minimal elegance */
+.app-btn-confirm {
+  background: $success;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  font-weight: 500;
+  &:hover { background: darken($success, 5%); }
+}
+
+.app-btn-cancel {
+  background: transparent;
+  border: 1px solid $danger;
+  color: $danger;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  &:hover {
+    background: $danger;
+    color: white;
+  }
+}
