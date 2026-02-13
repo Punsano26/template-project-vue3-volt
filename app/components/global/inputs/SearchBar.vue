@@ -4,7 +4,7 @@
     <InputText
       v-model="query"
       :placeholder="placeholder"
-      class="form-control ps-5"
+      class="form-control ps-5 app-field-control"
       @input="debouncedSearch"
     />
   </div>

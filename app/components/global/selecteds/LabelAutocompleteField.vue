@@ -1,14 +1,17 @@
 <template>
   <div class="mb-3">
-    <label v-if="label" :for="id" class="form-label">{{ label }}</label>
+    <label v-if="label" :for="id" class="form-label">
+      {{ label }}<span v-if="required" class="text-danger ms-1">*</span>
+    </label>
     <AutoComplete
       :id="id"
       v-model="model"
       :suggestions="filtered"
       @complete="search"
       :placeholder="placeholder"
-      class="w-100"
+      class="w-100 app-field-control"
       :class="{ 'p-invalid': error }"
+      :aria-required="required || undefined"
     />
     <small v-if="error" class="p-error">{{ error }}</small>
   </div>
@@ -20,6 +23,7 @@ const props = defineProps<{
   placeholder?: string
   error?: string
   id?: string
+  required?: boolean
   searchMethod?: (query: string) => Promise<any[]>
 }>()
 
