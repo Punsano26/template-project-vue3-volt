@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { DataTable } from 'primevue';
+import DataTable from '../../../../src/volt/DataTable.vue';
 
 defineProps<{
   data: any[]
