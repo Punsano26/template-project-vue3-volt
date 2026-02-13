@@ -2,10 +2,10 @@
   <div>
     <h2 class="h4 mb-4">Example Detail - ID: {{ id }}</h2>
     
-    <AppFilter @apply="applyFilter" @reset="resetFilter">
+    <Filter @apply="applyFilter" @reset="resetFilter">
       <template #filters>
-        <AppLabelField v-model="filterName" label="Name" placeholder="Filter by name" />
-        <AppSelect
+        <LabelField v-model="filterName" label="Name" placeholder="Filter by name" />
+        <LabelSelectField
           v-model="filterStatus"
           :options="statusOptions"
           optionLabel="label"
@@ -13,26 +13,34 @@
           label="Status"
         />
       </template>
-    </AppFilter>
+    </Filter>
 
     <div class="mt-4">
-      <AppDataTable :data="users" :loading="loading" paginator :rows="10">
+      <DataTable :data="users" :loading="loading" paginator :rows="10">
         <Column field="id" header="ID" />
         <Column field="name" header="Name" />
         <Column field="email" header="Email" />
         <Column field="status" header="Status" />
         <Column header="Actions">
           <template #body="{ data }">
-            <AppConfirmButton icon="pi pi-pencil" size="small" class="me-2" @click="edit(data)" />
-            <AppCancelButton icon="pi pi-trash" size="small" @click="remove(data)" />
+            <ConfirmButton icon="pi pi-pencil" size="small" class="me-2" @click="edit(data)" />
+            <CancelButton icon="pi pi-trash" size="small" @click="remove(data)" />
           </template>
         </Column>
-      </AppDataTable>
+      </DataTable>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import CancelButton from '~/components/global/buttons/CancelButton.vue';
+import ConfirmButton from '~/components/global/buttons/ConfirmButton.vue';
+import Filter from '~/components/global/inputs/Filter.vue';
+import LabelField from '~/components/global/inputs/LabelField.vue';
+import LabelSelectField
+  from '~/components/global/selecteds/LabelSelectField.vue';
+import DataTable from '~/components/global/tables/DataTable.vue';
+
 const route = useRoute()
 const id = computed(() => route.params.paramsId as string)
 
